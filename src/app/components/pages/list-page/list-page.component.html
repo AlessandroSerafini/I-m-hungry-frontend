@@ -1,8 +1,5 @@
 <h1>Restaurants</h1>
 <h2>Here you can manage your restaurant: you can add another one, update or delete an existing.</h2>
-<div *ngIf="!isLoaded">
-
-</div>
 <p *ngIf="isLoaded">
   <header>
     <div class="form-group">
@@ -16,6 +13,16 @@
             routerLink="/add-restaurant">
       New restaurant</button>
   </header>
+
+<div *ngIf="alert.visible">
+  <br />
+  <div class="alert"
+       [class.alert-danger]="alert.type==='danger'"
+       [class.alert-success]="alert.type==='success'">
+    {{alert.message}}
+  </div>
+</div>
+
 <div class="nb-count">
   {{getNbLabel()}}
 </div>
@@ -23,6 +30,6 @@
     *ngIf="filteredRestaurants.length>0">
   <li *ngFor="let restaurant of filteredRestaurants;">
     <app-card [restaurant]="restaurant"
-              (deleteRestaurantEmitter)="onDeleteRestaurant()"></app-card>
+              (deleteRestaurantEmitter)="onDeleteRestaurant($event)"></app-card>
   </li>
 </ul>

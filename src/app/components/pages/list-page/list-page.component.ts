@@ -14,6 +14,11 @@ export class ListPageComponent implements OnInit, OnDestroy {
   public isLoaded = false;
   public filteredRestaurants: Array<any> = [];
   public keyUp = new Subject<KeyboardEvent>();
+  alert = {
+    visible: false,
+    type: '',
+    message: ''
+  };
 
   constructor(private restaurantService: RestaurantService) {
   }
@@ -53,8 +58,22 @@ export class ListPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onDeleteRestaurant() {
-    this.initList();
+  public onDeleteRestaurant(res) {
+    this.alert = {
+      message: '',
+      type: '',
+      visible: false
+    };
+
+    if (res.success) {
+      this.initList();
+    } else {
+      this.alert = {
+        message: res.message,
+        type: 'danger',
+        visible: true
+      };
+    }
   }
 
   private subscribeToKeyUp() {

@@ -1,0 +1,30 @@
+@import "~node_modules/bourbon/core/_bourbon";
+
+header {
+  $buttonWidth: 150px;
+  @include clearfix();
+  .form-group {
+    float: left;
+    width: calc(100% - #{$buttonWidth} - 20px);
+  }
+  .btn {
+    width: $buttonWidth;
+    float: right;
+  }
+}
+
+ul {
+  $marginY: 40px;
+
+  &.restaurants {
+    list-style: none;
+
+    > li {
+      margin-top: $marginY;
+    }
+  }
+}
+
+.nb-count {
+  margin-top: 20px;
+}

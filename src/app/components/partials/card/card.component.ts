@@ -8,9 +8,10 @@ import {RestaurantService} from '../../../services/restaurant.service';
 })
 export class CardComponent implements OnInit {
   @Input() restaurant: any = null;
-  @Output() deleteRestaurantEmitter = new EventEmitter<string>();
+  @Output() deleteRestaurantEmitter = new EventEmitter<any>();
 
-  constructor(private restaurantService: RestaurantService) {}
+  constructor(private restaurantService: RestaurantService) {
+  }
 
   ngOnInit() {
   }
@@ -19,10 +20,11 @@ export class CardComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.restaurantService.deleteRestaurant(restaurantId)
         .then((res) => {
-            this.deleteRestaurantEmitter.emit();
+            this.deleteRestaurantEmitter.emit({success: true});
             resolve(res);
           }
         ).catch((err) => {
+        this.deleteRestaurantEmitter.emit({success: false, message: err.error.message});
         reject(err);
       });
     });
