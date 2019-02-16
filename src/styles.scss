@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/variables";
+@import "assets/scss/fonts";
+@import "assets/scss/forms";
+@import "assets/scss/buttons";
+@import "assets/scss/alerts";
+
+body {
+  font-family: 'Muli', sans-serif;
+  margin: 0;
+  background-color: #F5F4FC;
+
+  ul {
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin-left: -20px;
+  }
+
+  h2 {
+    color: #aaa;
+    font-size: 20px;
+    margin-top: -11px;
+    margin-bottom: 45px;
+  }
+}
