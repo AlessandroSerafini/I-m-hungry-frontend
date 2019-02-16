@@ -1,3 +1,54 @@
-<p>
-  restaurant-form works!
-</p>
+<div *ngIf="isLoaded">
+
+  <div class="alert"
+       [class.alert-danger]="alert.type==='danger'"
+       [class.alert-success]="alert.type==='success'"
+       *ngIf="alert.visible">
+    {{alert.message}}
+  </div>
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text"
+             class="form-control"
+             name="name"
+             [(ngModel)]="model.name"
+             #name="ngModel"
+             [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+             required/>
+      <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+        <div *ngIf="name.errors.required">Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text"
+             class="form-control"
+             name="city"
+             [(ngModel)]="model.city"
+             #city="ngModel"
+             [ngClass]="{ 'is-invalid': f.submitted && city.invalid }"
+             required/>
+      <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+        <div *ngIf="city.errors.required">City is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="food">Food</label>
+      <select [(ngModel)]="model.food"
+              class="form-control"
+              #food="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && food.invalid }"
+              name="food"
+              required>
+        <option *ngFor="let food of foods" [value]="food.name">{{food.name}}</option>
+      </select>
+      <div *ngIf="f.submitted && food.invalid" class="invalid-feedback">
+        <div *ngIf="food.errors.required">Food is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
