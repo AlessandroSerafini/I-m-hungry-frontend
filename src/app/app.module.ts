@@ -16,6 +16,7 @@ import {RestaurantFormComponent} from './components/partials/restaurant-form/res
 import { AddRestaurantComponent } from './components/pages/add-restaurant/add-restaurant.component';
 import { UpdateRestaurantComponent } from './components/pages/update-restaurant/update-restaurant.component';
 import {AuthGuard} from './guards/auth-guard.service';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {AuthGuard} from './guards/auth-guard.service';
     CardComponent,
     RestaurantFormComponent,
     AddRestaurantComponent,
-    UpdateRestaurantComponent
+    UpdateRestaurantComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
