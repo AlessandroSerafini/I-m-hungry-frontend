@@ -1,3 +1,11 @@
-<p>
-  header works!
-</p>
+<header>
+  <div class="logo"></div>
+  <ul>
+    <li *ngFor="let item of navigationService.getNavigation()">
+      <a [routerLink]="item.path">
+        <i class="material-icons">{{item.icon}}</i>
+        {{item.anchor}}
+      </a>
+    </li>
+  </ul>
+</header>
