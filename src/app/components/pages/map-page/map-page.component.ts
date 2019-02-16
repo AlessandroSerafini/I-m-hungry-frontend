@@ -9,6 +9,7 @@ import {RestaurantService} from '../../../services/restaurant.service';
 export class MapPageComponent implements OnInit {
   private restaurants: Array<any> = [];
   public filteredRestaurants: Array<any> = [];
+  public foods: Array<string> = [];
 
   constructor(public restaurantService: RestaurantService) { }
 
@@ -30,6 +31,14 @@ export class MapPageComponent implements OnInit {
         }).catch((err) => {
           console.log(err);
         });
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
+
+    this.restaurantService.getFoods().then((foods) => {
+      foods.forEach((food) => {
+        this.foods.push(food.name);
       });
     }).catch((err) => {
       console.log(err);
