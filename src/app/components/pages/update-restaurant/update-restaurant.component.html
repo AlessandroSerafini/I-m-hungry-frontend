@@ -1,3 +1,6 @@
-<p>
-  update-restaurant works!
-</p>
+<h1>Update restaurant</h1>
+<h2>Restaurant card</h2>
+
+<div *ngIf="restaurantId!==null">
+  <app-restaurant-form [restaurantId]="restaurantId"></app-restaurant-form>
+</div>
