@@ -87,4 +87,14 @@ export class RestaurantService {
       });
     });
   }
+
+  public getFoods(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.webService.getJSON('/foods').then((foods) => {
+        resolve(foods);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  }
 }
