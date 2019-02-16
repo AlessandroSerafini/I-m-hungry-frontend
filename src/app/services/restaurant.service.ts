@@ -57,4 +57,14 @@ export class RestaurantService {
     return 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' +
       '&photoreference=' + reference + '&key=' + this.googleApiKey;
   }
+
+  public addRestaurant(body): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.webService.putRequest('/addRestaurant', body).then((res) => {
+        resolve(res);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  }
 }
