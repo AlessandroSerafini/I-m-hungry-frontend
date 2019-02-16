@@ -9,13 +9,15 @@ import { AgmCoreModule } from '@agm/core';
 import { RestaurantStarsComponent } from './components/partials/restaurant-stars/restaurant-stars.component';
 import {SelectModule} from 'ng2-select';
 import {HttpClientModule} from '@angular/common/http';
+import { ListPageComponent } from './components/pages/list-page/list-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MapPageComponent,
-    RestaurantStarsComponent
+    RestaurantStarsComponent,
+    ListPageComponent
   ],
   imports: [
     BrowserModule,
