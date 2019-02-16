@@ -5,7 +5,7 @@ import {WebService} from './web.service';
   providedIn: 'root'
 })
 export class RestaurantService {
-  constructor() {
+  constructor(private webService: WebService) {
   }
 
   public getReview(restaurant): string {
@@ -14,5 +14,15 @@ export class RestaurantService {
       review = restaurant.reviews[0].text + ' - ' + restaurant.reviews[0].text;
     }
     return review;
+  }
+
+  public getRestaurants(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.webService.getJSON('/restaurants').then((restaurants) => {
+        resolve(restaurants);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
   }
 }
