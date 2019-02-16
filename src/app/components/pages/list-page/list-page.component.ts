@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {of, Subject, Subscription} from 'rxjs';
+import {debounceTime, delay, distinctUntilChanged, map, mergeMap} from 'rxjs/operators';
 import {RestaurantService} from '../../../services/restaurant.service';
 
 @Component({
@@ -8,8 +10,10 @@ import {RestaurantService} from '../../../services/restaurant.service';
 })
 export class ListPageComponent implements OnInit {
   private restaurants: Array<any> = [];
+  private subscription: Subscription;
   public isLoaded = false;
   public filteredRestaurants: Array<any> = [];
+  public keyUp = new Subject<KeyboardEvent>();
 
   constructor(private restaurantService: RestaurantService) {
   }
@@ -46,6 +50,19 @@ export class ListPageComponent implements OnInit {
 
   public onDeleteRestaurant() {
     this.initList();
+  }
+
+  private subscribeToKeyUp() {
+    this.subscription = this.keyUp.pipe(
+      map((event: any) => event.target.value),
+      debounceTime(1000),
+      distinctUntilChanged(),
+      mergeMap(search => of(search).pipe(
+        delay(10),
+      )),
+    ).subscribe((name) => {
+      this.filterRestaurants(name);
+    });
   }
 
   public getNbLabel(): string {
