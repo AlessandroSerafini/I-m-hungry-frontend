@@ -8,6 +8,7 @@ import { MapPageComponent } from './components/pages/map-page/map-page.component
 import { AgmCoreModule } from '@agm/core';
 import { RestaurantStarsComponent } from './components/partials/restaurant-stars/restaurant-stars.component';
 import {SelectModule} from 'ng2-select';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {SelectModule} from 'ng2-select';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBtIQBtYgekv6YnUfXFGK3La0vm6armidQ'
