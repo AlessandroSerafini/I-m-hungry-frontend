@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { MapPageComponent } from './components/pages/map-page/map-page.component';
 import { AgmCoreModule } from '@agm/core';
+import { RestaurantStarsComponent } from './components/partials/restaurant-stars/restaurant-stars.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MapPageComponent
+    MapPageComponent,
+    RestaurantStarsComponent
   ],
   imports: [
     BrowserModule,
