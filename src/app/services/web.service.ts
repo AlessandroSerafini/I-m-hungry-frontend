@@ -37,4 +37,18 @@ export class WebService {
       });
     });
   }
+
+  public postRequest(path: string = '', body): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.baseUrl + path, body)
+        .toPromise()
+        .then((res) => {
+            resolve(res);
+          }
+        ).catch((err) => {
+        reject(err);
+      });
+    });
+  }
+
 }
