@@ -15,11 +15,12 @@ const routes: Routes = [
   {
     path: 'handle-restaurant',
     component: ListPageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-restaurant',
-    component: AddRestaurantComponent
+    component: AddRestaurantComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -27,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'update-restaurant/:id',
-    component: UpdateRestaurantComponent
+    component: UpdateRestaurantComponent,
+    canActivate: [AuthGuard]
   },
 ];
 
