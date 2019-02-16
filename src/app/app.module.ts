@@ -14,6 +14,7 @@ import {ListPageComponent} from './components/pages/list-page/list-page.componen
 import {CardComponent} from './components/partials/card/card.component';
 import {RestaurantFormComponent} from './components/partials/restaurant-form/restaurant-form.component';
 import { AddRestaurantComponent } from './components/pages/add-restaurant/add-restaurant.component';
+import { UpdateRestaurantComponent } from './components/pages/update-restaurant/update-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddRestaurantComponent } from './components/pages/add-restaurant/add-re
     ListPageComponent,
     CardComponent,
     RestaurantFormComponent,
-    AddRestaurantComponent
+    AddRestaurantComponent,
+    UpdateRestaurantComponent
   ],
   imports: [
     BrowserModule,
