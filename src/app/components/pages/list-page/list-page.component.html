@@ -22,6 +22,7 @@
 <ul class="restaurants"
     *ngIf="filteredRestaurants.length>0">
   <li *ngFor="let restaurant of filteredRestaurants;">
-
+    <app-card [restaurant]="restaurant"
+              (deleteRestaurantEmitter)="onDeleteRestaurant()"></app-card>
   </li>
 </ul>
