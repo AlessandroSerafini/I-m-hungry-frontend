@@ -10,6 +10,11 @@ export class RestaurantFormComponent implements OnInit {
   isLoaded = false;
   model: any = {};
   foods: Array<any>;
+  alert = {
+    visible: false,
+    type: '',
+    message: ''
+  };
   @Input() restaurantId: string = null;
 
   constructor(private restaurantService: RestaurantService) { }
@@ -33,6 +38,43 @@ export class RestaurantFormComponent implements OnInit {
     }).catch((err) => {
       console.log(err);
     });
+  }
+
+  onSubmit() {
+    this.alert = {
+      message: '',
+      type: '',
+      visible: false
+    };
+    if (this.restaurantId !== null) {
+      this.restaurantService.updateRestaurant(this.restaurantId, this.model).then(() => {
+        this.alert = {
+          message: 'Restaurant updated successfully',
+          type: 'success',
+          visible: true
+        };
+      }).catch((err) => {
+        this.alert = {
+          message: err,
+          type: 'danger',
+          visible: true
+        };
+      });
+    } else {
+      this.restaurantService.addRestaurant(this.model).then(() => {
+        this.alert = {
+          message: 'Restaurant inserted successfully',
+          type: 'success',
+          visible: true
+        };
+      }).catch((err) => {
+        this.alert = {
+          message: err,
+          type: 'danger',
+          visible: true
+        };
+      });
+    }
   }
 
 }
