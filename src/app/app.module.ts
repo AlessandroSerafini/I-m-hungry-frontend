@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/partials/header/header.component';
 import { MapPageComponent } from './components/pages/map-page/map-page.component';
 import { AgmCoreModule } from '@agm/core';
 import { RestaurantStarsComponent } from './components/partials/restaurant-stars/restaurant-stars.component';
+import {SelectModule} from 'ng2-select';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RestaurantStarsComponent } from './components/partials/restaurant-stars
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBtIQBtYgekv6YnUfXFGK3La0vm6armidQ'
     }),
+    SelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
