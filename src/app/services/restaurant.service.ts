@@ -52,4 +52,9 @@ export class RestaurantService {
       });
     });
   }
+
+  public getGooglePlacePhoto(reference: string = ''): string {
+    return 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' +
+      '&photoreference=' + reference + '&key=' + this.googleApiKey;
+  }
 }
