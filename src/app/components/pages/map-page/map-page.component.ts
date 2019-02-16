@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RestaurantService} from '../../../services/restaurant.service';
+import {NavigationService} from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-map-page',
@@ -11,7 +12,8 @@ export class MapPageComponent implements OnInit {
   public filteredRestaurants: Array<any> = [];
   public foods: Array<string> = [];
 
-  constructor(public restaurantService: RestaurantService) { }
+  constructor(public restaurantService: RestaurantService,
+              public navigationService: NavigationService) { }
 
   ngOnInit() {
     this.restaurantService.getRestaurants().then((restaurants) => {

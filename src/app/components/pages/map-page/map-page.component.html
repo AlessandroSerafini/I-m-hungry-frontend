@@ -12,3 +12,17 @@
     </agm-info-window>
   </agm-marker>
 </agm-map>
+
+<header id="map-header">
+  <h3 class="title">Services</h3>
+  <ul class="navigation">
+    <li *ngFor="let item of navigationService.getNavigation()">
+      <a [routerLink]="item.path">
+        <i class="material-icons">{{item.icon}}</i>
+        {{item.anchor}}
+      </a>
+    </li>
+  </ul>
+
+
+</header>
