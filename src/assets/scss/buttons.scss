@@ -1,0 +1,33 @@
+.btn {
+  border: none;
+  box-shadow: none;
+  border-radius: 100px;
+  padding: 0 25px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 300;
+  cursor: pointer;
+  outline: none !important;
+
+  &.btn-primary {
+    color: #FFF;
+    background: #9F7CF4;
+    background: -moz-linear-gradient(left, #9F7CF4 0%, #D798D4 100%);
+    background: -webkit-linear-gradient(left, #9F7CF4 0%, #D798D4 100%);
+    background: linear-gradient(to right, #9F7CF4 0%, #D798D4 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9F7CF4', endColorstr='#D798D4', GradientType=1);
+  }
+
+  &.btn-delete {
+    color: #FFF;
+    background: #a90329;
+    background: -moz-linear-gradient(left, #a90329 0%, #8f0222 44%, #6d0019 100%);
+    background: -webkit-linear-gradient(left, #a90329 0%, #8f0222 44%, #6d0019 100%);
+    background: linear-gradient(to right, #a90329 0%, #8f0222 44%, #6d0019 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a90329', endColorstr='#6d0019', GradientType=1);
+  }
+
+  + .btn{
+    margin-left: 10px;
+  }
+}
