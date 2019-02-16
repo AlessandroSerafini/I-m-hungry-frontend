@@ -1,3 +1,25 @@
-<p>
-  card works!
-</p>
+<div class="card">
+  <div class="photo"
+       [ngStyle]="{ 'background-image': 'url(' + restaurant.photoUrl + ')'}">
+  </div>
+  <div class="content">
+    <h3>{{restaurant.name}}<span class="food">{{restaurant.food}}</span></h3>
+    <div class="cta">
+      <button class="btn btn-primary"
+              [routerLink]="['/update-restaurant/',restaurant.id]">
+        Update
+      </button>
+      <button class="btn btn-delete"
+              (click)="deleteRestaurant(restaurant.id)">
+        Delete
+      </button>
+    </div>
+    <app-restaurant-stars [restaurant]="restaurant"></app-restaurant-stars>
+    <div class="address">
+      <i class="material-icons">place</i> {{restaurant.formatted_address}}
+    </div>
+    <div class="review">
+      <i>{{restaurantService.getReview(restaurant)}}</i>
+    </div>
+  </div>
+</div>
