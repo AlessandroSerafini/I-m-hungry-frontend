@@ -1,0 +1,13 @@
+
+
+ul {
+  &.stars {
+    list-style: none;
+    margin-bottom: 10px;
+
+    > li {
+      display: inline-block;
+      color: gold;
+    }
+  }
+}
