@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RestaurantService} from '../../../services/restaurant.service';
 
 @Component({
@@ -11,7 +11,8 @@ export class ListPageComponent implements OnInit {
   public isLoaded = false;
   public filteredRestaurants: Array<any> = [];
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(private restaurantService: RestaurantService) {
+  }
 
   ngOnInit() {
     this.initList();
@@ -29,6 +30,7 @@ export class ListPageComponent implements OnInit {
               placeDetails.food = restaurant.food;
               placeDetails.id = restaurant.id;
               this.restaurants.push(placeDetails);
+              this.filterRestaurants('');
             }).catch((err) => {
               console.log(err);
             });
@@ -39,6 +41,15 @@ export class ListPageComponent implements OnInit {
       });
     }).catch((err) => {
       console.log(err);
+    });
+  }
+
+  private filterRestaurants(name: string = '') {
+    this.filteredRestaurants = [];
+    this.restaurants.forEach((restaurant) => {
+      if (name === '' || restaurant.name.toLowerCase().includes(name.toLowerCase())) {
+        this.filteredRestaurants.push(restaurant);
+      }
     });
   }
 
