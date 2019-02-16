@@ -1,0 +1,13 @@
+.alert {
+  margin-bottom: 40px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  &.alert-success {
+    color: #008000;
+    background-color: rgba(0, 128, 0, 0.1);
+  }
+  &.alert-danger {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: darkred;
+  }
+}
