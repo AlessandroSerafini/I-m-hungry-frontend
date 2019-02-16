@@ -21,11 +21,6 @@ export class NavigationService {
         anchor: 'List',
         path: '/handle-restaurant',
         icon: 'restaurant'
-      },
-      {
-        anchor: 'Login',
-        path: '/login',
-        icon: 'power_settings_new'
       }
     ];
   }
