@@ -8,7 +8,7 @@ import {RestaurantService} from '../../../services/restaurant.service';
   templateUrl: './list-page.component.html',
   styleUrls: ['./list-page.component.scss']
 })
-export class ListPageComponent implements OnInit {
+export class ListPageComponent implements OnInit, OnDestroy {
   private restaurants: Array<any> = [];
   private subscription: Subscription;
   public isLoaded = false;
@@ -20,6 +20,10 @@ export class ListPageComponent implements OnInit {
 
   ngOnInit() {
     this.initList();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   private initList() {
