@@ -19,6 +19,7 @@ export class ListPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.subscribeToKeyUp();
     this.initList();
   }
 
