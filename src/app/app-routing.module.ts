@@ -4,6 +4,7 @@ import {ListPageComponent} from './components/pages/list-page/list-page.componen
 import {AddRestaurantComponent} from './components/pages/add-restaurant/add-restaurant.component';
 import {UpdateRestaurantComponent} from './components/pages/update-restaurant/update-restaurant.component';
 import {MapPageComponent} from './components/pages/map-page/map-page.component';
+import {AuthGuard} from './guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: 'handle-restaurant',
-    component: ListPageComponent
+    component: ListPageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'add-restaurant',
