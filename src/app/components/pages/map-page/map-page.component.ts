@@ -3,6 +3,7 @@ import {RestaurantService} from '../../../services/restaurant.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {of, Subject, Subscription} from 'rxjs';
 import {debounceTime, delay, distinctUntilChanged, map, mergeMap} from 'rxjs/operators';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-map-page',
@@ -21,7 +22,8 @@ export class MapPageComponent implements OnInit {
   private nameFilterVal = '';
 
   constructor(public restaurantService: RestaurantService,
-              public navigationService: NavigationService) { }
+              public navigationService: NavigationService,
+              public authService: AuthService) { }
 
   ngOnInit() {
     this.restaurantService.getRestaurants().then((restaurants) => {
