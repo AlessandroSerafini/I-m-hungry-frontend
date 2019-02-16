@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {RestaurantService} from '../../../services/restaurant.service';
 import {NavigationService} from '../../../services/navigation.service';
+import {of, Subject, Subscription} from 'rxjs';
+import {debounceTime, delay, distinctUntilChanged, map, mergeMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-map-page',
@@ -11,6 +13,11 @@ export class MapPageComponent implements OnInit {
   private restaurants: Array<any> = [];
   public filteredRestaurants: Array<any> = [];
   public foods: Array<string> = [];
+  public isLoading = false;
+  public filteredFoods: any = [];
+  private subscription: Subscription;
+  public keyUp = new Subject<KeyboardEvent>();
+  private nameFilterVal = '';
 
   constructor(public restaurantService: RestaurantService,
               public navigationService: NavigationService) { }
@@ -45,6 +52,45 @@ export class MapPageComponent implements OnInit {
     }).catch((err) => {
       console.log(err);
     });
+  }
+
+  private subscribeToKeyUp() {
+    this.subscription = this.keyUp.pipe(
+      map((event: any) => event.target.value),
+      debounceTime(1000),
+      distinctUntilChanged(),
+      mergeMap(search => of(search).pipe(
+        delay(10),
+      )),
+    ).subscribe((name) => {
+      this.nameFilterVal = name;
+      this.filterRestaurants();
+    });
+  }
+
+  public onFoodFilterAdd(): void {
+    this.filterRestaurants();
+  }
+
+  public onFoodFilterRemove(): void {
+    this.filterRestaurants();
+  }
+
+  private filterRestaurants(): void {
+    this.isLoading = true;
+    this.filteredRestaurants = [];
+
+    this.restaurants.forEach((restaurant) => {
+      if ((this.filteredFoods.length === 0 || this.filteredFoods.some(food => food.text === restaurant.food))
+        && (this.nameFilterVal === '' || restaurant.name.toLowerCase().includes(this.nameFilterVal.toLowerCase()))) {
+        this.filteredRestaurants.push(restaurant);
+      }
+    });
+    this.isLoading = false;
+  }
+
+  public refreshFoodFilter(foodFilters: any): void {
+    this.filteredFoods = foodFilters;
   }
 
 }

@@ -28,5 +28,22 @@
           [routerLink]="'/add-restaurant'">Add restaurant
   </button>
 
+  <h3 class="title">Filters</h3>
+  <h4>Name</h4>
+  <input type="text"
+         placeholder="Name"
+         class="form-control"
+         (keyup)='keyUp.next($event)'>
+
+  <h4>Food</h4>
+  <ng-select *ngIf="foods.length>0"
+             [multiple]="true"
+             [items]="foods"
+             [disabled]="isLoading"
+             (data)="refreshFoodFilter($event)"
+             (selected)="onFoodFilterAdd($event)"
+             (removed)="onFoodFilterRemove($event)"
+             placeholder="All foods"></ng-select>
+
 
 </header>
