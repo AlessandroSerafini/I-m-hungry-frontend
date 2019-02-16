@@ -39,4 +39,17 @@ export class RestaurantService {
       });
     });
   }
+
+  public getGooglePlaceDetails(placeId: string = ''): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const url = 'https://maps.googleapis.com/maps/api/place/details/json?' +
+        'placeid=' + placeId + '&fields=formatted_address,geometry,' +
+        'formatted_phone_number,name,rating,reviews&key=' + this.googleApiKey;
+      this.webService.getJSON(url, true).then((res) => {
+        resolve(res.result);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  }
 }
