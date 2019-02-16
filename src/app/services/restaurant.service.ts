@@ -77,4 +77,14 @@ export class RestaurantService {
       });
     });
   }
+
+  public deleteRestaurant(restaurantId): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.webService.deleteRequest('/deleteRestaurant/' + restaurantId).then((res) => {
+        resolve(res);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  }
 }
