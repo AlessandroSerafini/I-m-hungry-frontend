@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ListPageComponent} from './components/pages/list-page/list-page.component';
 import {CardComponent} from './components/partials/card/card.component';
 import {RestaurantFormComponent} from './components/partials/restaurant-form/restaurant-form.component';
+import { AddRestaurantComponent } from './components/pages/add-restaurant/add-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {RestaurantFormComponent} from './components/partials/restaurant-form/res
     RestaurantStarsComponent,
     ListPageComponent,
     CardComponent,
-    RestaurantFormComponent
+    RestaurantFormComponent,
+    AddRestaurantComponent
   ],
   imports: [
     BrowserModule,
