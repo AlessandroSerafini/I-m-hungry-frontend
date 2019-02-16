@@ -67,4 +67,14 @@ export class RestaurantService {
       });
     });
   }
+
+  public getRestaurantDetail(restaurantId): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.webService.getJSON('/restaurants/' + restaurantId).then((restaurant) => {
+        resolve(restaurant);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  }
 }
