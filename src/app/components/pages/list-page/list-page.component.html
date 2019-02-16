@@ -19,3 +19,9 @@
 <div class="nb-count">
   {{getNbLabel()}}
 </div>
+<ul class="restaurants"
+    *ngIf="filteredRestaurants.length>0">
+  <li *ngFor="let restaurant of filteredRestaurants;">
+
+  </li>
+</ul>
