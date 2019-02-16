@@ -10,6 +10,7 @@ import { RestaurantStarsComponent } from './components/partials/restaurant-stars
 import {SelectModule} from 'ng2-select';
 import {HttpClientModule} from '@angular/common/http';
 import { ListPageComponent } from './components/pages/list-page/list-page.component';
+import { CardComponent } from './components/partials/card/card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListPageComponent } from './components/pages/list-page/list-page.compon
     HeaderComponent,
     MapPageComponent,
     RestaurantStarsComponent,
-    ListPageComponent
+    ListPageComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
