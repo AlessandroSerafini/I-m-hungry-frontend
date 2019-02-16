@@ -1,3 +1,8 @@
-<p>
-  restaurant-stars works!
-</p>
+<ul class="stars">
+  <li *ngFor="let item of createStarsArray();">
+    <i class="material-icons">star</i>
+  </li>
+  <li *ngFor="let item of createLeftStarsArray();">
+    <i class="material-icons">star_border</i>
+  </li>
+</ul>
