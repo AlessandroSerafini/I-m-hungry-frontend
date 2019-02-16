@@ -55,7 +55,7 @@ export class RestaurantFormComponent implements OnInit {
         };
       }).catch((err) => {
         this.alert = {
-          message: err,
+          message: err.error.message,
           type: 'danger',
           visible: true
         };
@@ -69,7 +69,7 @@ export class RestaurantFormComponent implements OnInit {
         };
       }).catch((err) => {
         this.alert = {
-          message: err,
+          message: err.error.message,
           type: 'danger',
           visible: true
         };
