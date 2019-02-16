@@ -51,4 +51,16 @@ export class WebService {
     });
   }
 
+  public deleteRequest(path: string = ''): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.delete(this.baseUrl + path)
+        .toPromise()
+        .then((res) => {
+            resolve(res);
+          }
+        ).catch((err) => {
+        reject(err);
+      });
+    });
+  }
 }
