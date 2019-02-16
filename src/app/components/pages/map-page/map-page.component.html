@@ -1,4 +1,14 @@
 <agm-map [latitude]="44.037093"
          [longitude]="12.600949"
          [zoom]="12">
+  <agm-marker *ngFor="let restaurant of filteredRestaurants"
+              [latitude]="restaurant.geometry.location.lat"
+              [longitude]="restaurant.geometry.location.lng">
+    <agm-info-window>
+      <h3>{{restaurant.name}}<span>{{restaurant.food}}</span></h3>
+      <app-restaurant-stars [restaurant]="restaurant"></app-restaurant-stars>
+      <img [src]="restaurant.photoUrl"/>
+      <i class="review">{{restaurantService.getReview(restaurant)}}</i>
+    </agm-info-window>
+  </agm-marker>
 </agm-map>
