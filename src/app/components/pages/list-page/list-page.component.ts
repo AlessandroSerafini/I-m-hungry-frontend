@@ -44,6 +44,10 @@ export class ListPageComponent implements OnInit {
     });
   }
 
+  public onDeleteRestaurant() {
+    this.initList();
+  }
+
   private filterRestaurants(name: string = '') {
     this.filteredRestaurants = [];
     this.restaurants.forEach((restaurant) => {
