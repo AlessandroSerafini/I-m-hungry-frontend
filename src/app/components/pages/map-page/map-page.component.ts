@@ -7,7 +7,8 @@ import {debounceTime, delay, distinctUntilChanged, map, mergeMap} from 'rxjs/ope
 @Component({
   selector: 'app-map-page',
   templateUrl: './map-page.component.html',
-  styleUrls: ['./map-page.component.scss']
+  styleUrls: ['./map-page.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MapPageComponent implements OnInit {
   private restaurants: Array<any> = [];
