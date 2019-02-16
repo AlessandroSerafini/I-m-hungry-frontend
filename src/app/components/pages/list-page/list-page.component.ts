@@ -48,6 +48,16 @@ export class ListPageComponent implements OnInit {
     this.initList();
   }
 
+  public getNbLabel(): string {
+    if (this.filteredRestaurants.length === 0) {
+      return 'Non sono stati trovati ristoranti';
+    } else if (this.filteredRestaurants.length === 1) {
+      return 'E\' stato trovato 1 ristorante';
+    } else {
+      return 'Sono stati trovati ' + this.filteredRestaurants.length + ' ristoranti';
+    }
+  }
+
   private filterRestaurants(name: string = '') {
     this.filteredRestaurants = [];
     this.restaurants.forEach((restaurant) => {
