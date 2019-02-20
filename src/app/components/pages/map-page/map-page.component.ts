@@ -23,27 +23,14 @@ export class MapPageComponent implements OnInit {
 
   constructor(public restaurantService: RestaurantService,
               public navigationService: NavigationService,
-              public authService: AuthService) { }
+              public authService: AuthService) {
+  }
 
   ngOnInit() {
     this.restaurantService.getRestaurants().then((restaurants) => {
-      restaurants.forEach((restaurant) => {
-        this.restaurantService.getGooglePlace(restaurant.name, restaurant.city).then((place) => {
-          if (typeof place !== 'undefined') {
-            this.restaurantService.getGooglePlaceDetails(place.place_id).then((placeDetails) => {
-              placeDetails.photoUrl = this.restaurantService.getGooglePlacePhoto(place.photos[0].photo_reference);
-              placeDetails.food = restaurant.food;
-              placeDetails.id = restaurant.id;
-              this.restaurants.push(placeDetails);
-              this.filteredRestaurants.push(placeDetails);
-            }).catch((err) => {
-              console.log(err);
-            });
-          }
-        }).catch((err) => {
-          console.log(err);
-        });
-      });
+      this.restaurants = restaurants;
+      this.filteredRestaurants = this.restaurants;
+      this.subscribeToKeyUp();
     }).catch((err) => {
       console.log(err);
     });
