@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,22 @@ export class WebService {
   }
 
 
-  public getJSON(path: string = '', isAbsolutePath: boolean = false): Promise<any> {
+  public getJSON(path: string = '', parameters: object = null, isAbsolutePath: boolean = false): Promise<any> {
     return new Promise((resolve, reject) => {
       const url = isAbsolutePath ? path : this.baseUrl + path;
-      this.http.get(url)
+
+      let params = null;
+
+      if (parameters !== null) {
+        params = new HttpParams();
+        for (const key in parameters) {
+          if (parameters.hasOwnProperty(key)) {
+            params = params.append(key, parameters[key]);
+          }
+        }
+      }
+
+      this.http.get(url, {params: params})
         .toPromise()
         .then((res) => {
             resolve(res);
