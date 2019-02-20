@@ -13,8 +13,13 @@ export class AuthService {
 
   public login(username: string = '', password: string = ''): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.webService.getJSON('/login?username=' + username + '&password=' + password).then((res) => {
-        localStorage.setItem('isAuthenticated', 'true');
+      const params = {
+        username: username,
+        password: password
+      };
+      this.webService.getJSON('/login', params).then((res) => {
+        console.log(res);
+        localStorage.setItem('authToken', res.message);
         this.router.navigate(['/handle-restaurant']);
         resolve();
       }).catch((err) => {
@@ -26,7 +31,7 @@ export class AuthService {
   public logout(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.webService.getJSON('/logout').then((res) => {
-        localStorage.removeItem('isAuthenticated');
+        localStorage.removeItem('authToken');
         this.router.navigate(['/login']);
         resolve();
       }).catch((err) => {
@@ -35,7 +40,7 @@ export class AuthService {
     });
   }
 
-  public isLogged(): boolean {
-    return localStorage.getItem('isAuthenticated') !== null;
+  public getAuthToken(): string {
+    return localStorage.getItem('authToken');
   }
 }
