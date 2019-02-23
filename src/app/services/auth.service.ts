@@ -18,8 +18,8 @@ export class AuthService {
         password: password
       };
       this.webService.getJSON('/login', params).then((res) => {
-        console.log(res);
         localStorage.setItem('authToken', res.message);
+
         this.router.navigate(['/handle-restaurant']);
         resolve();
       }).catch((err) => {
@@ -28,16 +28,9 @@ export class AuthService {
     });
   }
 
-  public logout(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.webService.getJSON('/logout').then((res) => {
-        localStorage.removeItem('authToken');
-        this.router.navigate(['/login']);
-        resolve();
-      }).catch((err) => {
-        reject(err);
-      });
-    });
+  public logout(): void {
+    localStorage.removeItem('authToken');
+    this.router.navigate(['/login']);
   }
 
   public getAuthToken(): string {
