@@ -17,7 +17,8 @@ export class RestaurantFormComponent implements OnInit {
   };
   @Input() restaurantId: string = null;
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(private restaurantService: RestaurantService) {
+  }
 
   ngOnInit() {
     this.restaurantService.getFoods().then((foods) => {

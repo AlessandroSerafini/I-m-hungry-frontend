@@ -13,10 +13,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {ListPageComponent} from './components/pages/list-page/list-page.component';
 import {CardComponent} from './components/partials/card/card.component';
 import {RestaurantFormComponent} from './components/partials/restaurant-form/restaurant-form.component';
-import { AddRestaurantComponent } from './components/pages/add-restaurant/add-restaurant.component';
-import { UpdateRestaurantComponent } from './components/pages/update-restaurant/update-restaurant.component';
+import {AddRestaurantComponent} from './components/pages/add-restaurant/add-restaurant.component';
+import {UpdateRestaurantComponent} from './components/pages/update-restaurant/update-restaurant.component';
 import {AuthGuard} from './guards/auth-guard.service';
-import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
