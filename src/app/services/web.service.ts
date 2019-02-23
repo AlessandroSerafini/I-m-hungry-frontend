@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class WebService {
         }
       }
 
-      this.http.get(url, {params: params})
+      this.http.get(url, {params: params, headers: this.setHeaders(false)})
         .toPromise()
         .then((res) => {
             resolve(res);
@@ -39,7 +39,7 @@ export class WebService {
 
   public putRequest(path: string = '', body): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.put(this.baseUrl + path, body)
+      this.http.put(this.baseUrl + path, body, {headers: this.setHeaders()})
         .toPromise()
         .then((res) => {
             resolve(res);
@@ -50,9 +50,9 @@ export class WebService {
     });
   }
 
-  public postRequest(path: string = '', body): Promise<any> {
+  public postRequest(path: string = '', body, ): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post(this.baseUrl + path, body)
+      this.http.post(this.baseUrl + path, body, {headers: this.setHeaders()})
         .toPromise()
         .then((res) => {
             resolve(res);
@@ -65,7 +65,7 @@ export class WebService {
 
   public deleteRequest(path: string = ''): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.delete(this.baseUrl + path)
+      this.http.delete(this.baseUrl + path, {headers: this.setHeaders()})
         .toPromise()
         .then((res) => {
             resolve(res);
@@ -74,5 +74,14 @@ export class WebService {
         reject(err);
       });
     });
+  }
+
+  private setHeaders(authenticated: boolean = true): HttpHeaders {
+    let contentHeaders: HttpHeaders = new HttpHeaders();
+    contentHeaders = contentHeaders.append('Content-Type', 'application/json');
+    if (authenticated) {
+      contentHeaders = contentHeaders.append('Authorization', localStorage.getItem('authToken'));
+    }
+    return contentHeaders;
   }
 }
