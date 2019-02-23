@@ -86,11 +86,13 @@ export class ListPageComponent implements OnInit, OnDestroy {
 
   private filterRestaurants(name: string = '') {
     this.filteredRestaurants = [];
-    this.restaurants.forEach((restaurant) => {
-      if (name === '' || restaurant.name.toLowerCase().includes(name.toLowerCase())) {
-        this.filteredRestaurants.push(restaurant);
-      }
-    });
+    if (this.restaurants.length > 0) {
+      this.restaurants.forEach((restaurant) => {
+        if (name === '' || restaurant.name.toLowerCase().includes(name.toLowerCase())) {
+          this.filteredRestaurants.push(restaurant);
+        }
+      });
+    }
   }
 
 }
