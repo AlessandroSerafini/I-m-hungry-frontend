@@ -10,7 +10,7 @@ export class CardComponent implements OnInit {
   @Input() restaurant: any = null;
   @Output() deleteRestaurantEmitter = new EventEmitter<any>();
 
-  constructor(private restaurantService: RestaurantService) {
+  constructor(public restaurantService: RestaurantService) {
   }
 
   ngOnInit() {
